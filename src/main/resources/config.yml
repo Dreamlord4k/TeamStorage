@@ -1,0 +1,203 @@
+language: "ru"
+
+storage:
+  # Valid values: 9, 18, 27, 36, 45, 54.
+  size: 54
+  # If the city name is longer than this, GUI titles use the city tag instead.
+  title-city-name-max-length: 14
+  title:
+    ru: "&2Хранилище города: %city_color%%city%"
+    en: "&2City Storage: %city_color%%city%"
+  # Admin-only command: /teamstorage open [city]
+  admin-open-command-enabled: true
+
+menu:
+  title:
+    ru: "&2Эндер-сундук"
+    en: "&2Ender Chest"
+  size: 27
+  sounds:
+    enabled: true
+    open: "minecraft:block.ender_chest.open"
+    click: "minecraft:ui.button.click"
+  items:
+    personal:
+      slot: 11
+      material: "ENDER_CHEST"
+      custom-model-data: 0
+      name:
+        ru: "&aЛичное хранилище"
+        en: "&aPersonal Storage"
+      lore:
+        ru:
+          - "&7Открыть обычный эндер-сундук."
+        en:
+          - "&7Open your vanilla ender chest."
+    city:
+      slot: 15
+      material: "CHEST"
+      custom-model-data: 0
+      name:
+        ru: "&bХранилище города"
+        en: "&bCity Storage"
+      lore:
+        ru:
+          - "&7Открыть общее хранилище города."
+          - "&8Город: %city_color%%city%"
+        en:
+          - "&7Open shared city storage."
+          - "&8City: %city_color%%city%"
+
+tab:
+  # This is the only switch controlling player-list name changes.
+  # Disable it when another plugin should have full control over tab names.
+  enabled: true
+  format:
+    ru: "&7[%tag_color%%tag%&7] &f%player%"
+    en: "&7[%tag_color%%tag%&7] &f%player%"
+  colors:
+    green: "&a"
+    blue: "&9"
+    red: "&c"
+    gold: "&6"
+    aqua: "&b"
+    gray: "&7"
+    white: "&f"
+    yellow: "&e"
+    dark_green: "&2"
+    dark_red: "&4"
+    purple: "&5"
+
+city-chat:
+  enabled: true
+  trigger: "@"
+  toggle-command-enabled: true
+  format:
+    ru: "&8[%city_color%%city%&8] &f%player%&7: &f%message%"
+    en: "&8[%city_color%%city%&8] &f%player%&7: &f%message%"
+  spy:
+    enabled: true
+    permission: "teamstorage.chat.spy"
+    format:
+      ru: "&8[&cSpy&8][%city_color%%city%&8] &f%player%&7: &f%message%"
+      en: "&8[&cSpy&8][%city_color%%city%&8] &f%player%&7: &f%message%"
+  log:
+    enabled: true
+    file: "city-chat.log"
+
+logging:
+  enabled: true
+  file: "team-storage.log"
+
+messages:
+  prefix:
+    ru: "&8[&2TeamStorage&8] &r"
+    en: "&8[&2TeamStorage&8] &r"
+  only-player:
+    ru: "&cЭту команду может использовать только игрок."
+    en: "&cOnly players can use this command."
+  no-permission:
+    ru: "&cУ вас нет прав."
+    en: "&cYou do not have permission."
+  usage-city:
+    ru: "&cИспользование: /city <create|delete|add|remove|info|list|tag|tagcolor>"
+    en: "&cUsage: /city <create|delete|add|remove|info|list|tag|tagcolor>"
+  usage-city-create:
+    ru: "&cИспользование: /city create <name> <tag>"
+    en: "&cUsage: /city create <name> <tag>"
+  usage-city-delete:
+    ru: "&cИспользование: /city delete <name>"
+    en: "&cUsage: /city delete <name>"
+  usage-city-add:
+    ru: "&cИспользование: /city add <player> <city>"
+    en: "&cUsage: /city add <player> <city>"
+  usage-city-remove:
+    ru: "&cИспользование: /city remove <player>"
+    en: "&cUsage: /city remove <player>"
+  usage-city-info:
+    ru: "&cИспользование: /city info <city>"
+    en: "&cUsage: /city info <city>"
+  usage-city-tag:
+    ru: "&cИспользование: /city tag <city> <tag>"
+    en: "&cUsage: /city tag <city> <tag>"
+  usage-city-tagcolor:
+    ru: "&cИспользование: /city tagcolor <city> <color|#hex>"
+    en: "&cUsage: /city tagcolor <city> <color|#hex>"
+  city-created:
+    ru: "&aГород &f%city% &aсоздан. Тег: &f%tag%&a."
+    en: "&aCity &f%city% &awas created. Tag: &f%tag%&a."
+  city-exists:
+    ru: "&cГород &f%city% &cуже существует."
+    en: "&cCity &f%city% &calready exists."
+  city-tag-exists:
+    ru: "&cТег &f%tag% &cуже используется другим городом."
+    en: "&cTag &f%tag% &cis already used by another city."
+  invalid-city-name:
+    ru: "&cНазвание города: 2-32 символа, буквы/цифры/подчеркивание/точка/дефис."
+    en: "&cCity name must be 2-32 characters: letters, numbers, underscore, dot or dash."
+  invalid-city-tag:
+    ru: "&cТег города должен быть 2-4 символа: буквы или цифры."
+    en: "&cCity tag must be 2-4 characters: letters or numbers."
+  invalid-tag-color:
+    ru: "&cНеизвестный цвет. Используйте алиас из config.yml или HEX, например #55ff99."
+    en: "&cUnknown color. Use an alias from config.yml or HEX, for example #55ff99."
+  city-not-found:
+    ru: "&cГород &f%city% &cне найден."
+    en: "&cCity &f%city% &cdoes not exist."
+  city-deleted:
+    ru: "&aГород &f%city% &aудален."
+    en: "&aCity &f%city% &awas deleted."
+  city-delete-storage-not-empty:
+    ru: "&cНельзя удалить &f%city%&c: хранилище города не пустое."
+    en: "&cCannot delete &f%city%&c: city storage is not empty."
+  city-added-player:
+    ru: "&aИгрок &f%player% &aдобавлен в город &f%city%&a."
+    en: "&aPlayer &f%player% &awas added to &f%city%&a."
+  city-removed-player:
+    ru: "&aИгрок &f%player% &aудален из своего города."
+    en: "&aPlayer &f%player% &awas removed from their city."
+  city-tag-updated:
+    ru: "&aТег города &f%city% &aизменен на &f%tag%&a."
+    en: "&aCity &f%city% &atag changed to &f%tag%&a."
+  city-tag-color-updated:
+    ru: "&aЦвет тега города &f%city% &aизменен на &f%color%&a."
+    en: "&aCity &f%city% &atag color changed to &f%color%&a."
+  player-not-in-city:
+    ru: "&cИгрок &f%player% &cне состоит в городе."
+    en: "&cPlayer &f%player% &cis not in a city."
+  you-not-in-city:
+    ru: "&cВы не состоите в городе."
+    en: "&cYou are not in a city."
+  city-access-changed:
+    ru: "&cВаш доступ к городу изменился. Откройте эндер-сундук заново."
+    en: "&cYour city access changed. Reopen the ender chest."
+  toggle-enabled:
+    ru: "&aМеню городского хранилища включено."
+    en: "&aCity storage menu is now enabled."
+  toggle-disabled:
+    ru: "&eМеню городского хранилища выключено. Эндер-сундук будет открываться обычно."
+    en: "&eCity storage menu is now disabled. Your ender chest will open normally."
+  chat-toggle-enabled:
+    ru: "&aПостоянный чат города включен."
+    en: "&aPersistent city chat is now enabled."
+  chat-toggle-disabled:
+    ru: "&eПостоянный чат города выключен."
+    en: "&ePersistent city chat is now disabled."
+  admin-open-disabled:
+    ru: "&cОткрытие хранилища командой выключено в config.yml."
+    en: "&cOpening city storage by command is disabled in config."
+  opened-city-storage:
+    ru: "&aОткрыто хранилище города &f%city%&a."
+    en: "&aOpened city storage for &f%city%&a."
+  city-info:
+    ru: "&aГород: &f%city% &8| &aТег: &f%tag% &8| &aЦвет: &f%color% &8| &aУчастники: &f%members%"
+    en: "&aCity: &f%city% &8| &aTag: &f%tag% &8| &aColor: &f%color% &8| &aMembers: &f%members%"
+  city-list-empty:
+    ru: "&eГорода еще не созданы."
+    en: "&eNo cities created."
+  city-list:
+    ru: "&aГорода: &f%cities%"
+    en: "&aCities: &f%cities%"
+  invalid-storage-size:
+    ru: "&cНекорректный размер хранилища в config.yml. Используется 54."
+    en: "&cInvalid storage size in config. Using 54."

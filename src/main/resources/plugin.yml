@@ -1,0 +1,46 @@
+name: TeamStorage
+version: '1.0.0-26.2'
+main: ru.syntaxteam.teamstorage.TeamStoragePlugin
+api-version: '26.2'
+author: SyntaxTeam
+description: City shared storage integrated with ender chests for Paper/Purpur 26.2.
+
+commands:
+  city:
+    description: Manage cities.
+    usage: /city <create|delete|add|remove|info|list|tag|tagcolor>
+    permission: teamstorage.admin
+  teamstorage:
+    description: City storage player commands.
+    aliases: [citystorage]
+    usage: /teamstorage <toggle|open>
+  citychat:
+    description: Toggle persistent city chat.
+    aliases: [cc]
+    usage: /citychat
+
+permissions:
+  teamstorage.admin:
+    description: Allows city administration and admin storage opening.
+    default: op
+  teamstorage.toggle:
+    description: Allows toggling city storage menu visibility.
+    default: true
+  teamstorage.chat.spy:
+    description: Allows seeing all city chat messages.
+    default: op
+  citystorage.admin:
+    description: Legacy permission alias for TeamStorage.
+    default: false
+    children:
+      teamstorage.admin: true
+  citystorage.toggle:
+    description: Legacy permission alias for TeamStorage.
+    default: false
+    children:
+      teamstorage.toggle: true
+  citystorage.chat.spy:
+    description: Legacy permission alias for TeamStorage.
+    default: false
+    children:
+      teamstorage.chat.spy: true
